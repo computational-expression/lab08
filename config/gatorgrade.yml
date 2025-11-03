@@ -146,12 +146,9 @@
 
 # General Python and Documentation Requirements
 - description: Use appropriate docstrings for functions (at least 10 times across all files)
-  check: MatchFileFragment
+  check: ExecuteCommand
   options:
-    fragment: '"""'
-    count: 10
-    exact: false
-    directory: src
+    command: "grep -r '\"\"\"' src/ | wc -l | awk '{if ($1 >= 10) exit 0; else exit 1}'"
     
 - description: Complete all TODOs (no TODO comments remaining in any source files)
   check: ExecuteCommand

@@ -151,6 +151,7 @@
     fragment: '"""'
     count: 10
     exact: false
+    directory: src
     
 - description: Complete all TODOs (no TODO comments remaining in any source files)
   check: ExecuteCommand

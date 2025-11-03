@@ -1,0 +1,40 @@
+# Git ignore file for Lab 08 IoT Weather Station
+# CS 100 Fall 2025
+
+# Configuration files with sensitive data
+config.py
+wifi_credentials.py
+
+# Hardware testing files
+hardware_test.py
+sensor_calibration.py
+
+# Temporary files
+*.tmp
+*.log
+temp_*
+
+# MicroPython specific
+.micropy/
+__pycache__/
+*.pyc
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Virtual environment
+venv/
+env/
+.env
+
+# Testing outputs
+test_results/
+sensor_logs/
+api_responses/

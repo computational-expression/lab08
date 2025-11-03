@@ -1,0 +1,203 @@
+# Temperature Monitor (temperature_monitor.py) Tests
+- src/temperature_monitor.py:
+    - description: Check file exists
+      check: ConfirmFileExists
+    - description: Use dictionary creation with {} (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: '{'
+        count: 3
+        exact: false
+    - description: Use dictionary key access with [] (at least 4 times)
+      check: MatchFileFragment
+      options:
+        fragment: '["'
+        count: 4
+        exact: false
+    - description: Use dictionary .items() method for iteration (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: .items()
+        count: 1
+        exact: false
+    - description: Use for loop iteration (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'for '
+        count: 2
+        exact: false
+    - description: Use if statements for logic (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'if '
+        count: 3
+        exact: false
+    - description: Use function definitions (at least 3 functions)
+      check: MatchFileFragment
+      options:
+        fragment: 'def '
+        count: 3
+        exact: false
+
+# Light Monitor (light_monitor.py) Tests
+- src/light_monitor.py:
+    - description: Check file exists
+      check: ConfirmFileExists
+    - description: Use dictionary creation with {} (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: '{'
+        count: 3
+        exact: false
+    - description: Use dictionary key access with [] (at least 4 times)
+      check: MatchFileFragment
+      options:
+        fragment: '["'
+        count: 4
+        exact: false
+    - description: Use dictionary .items() or .values() method (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: .items()
+        count: 1
+        exact: false
+    - description: Use for loop iteration (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'for '
+        count: 2
+        exact: false
+    - description: Use if statements for logic (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'if '
+        count: 3
+        exact: false
+    - description: Use function definitions (at least 3 functions)
+      check: MatchFileFragment
+      options:
+        fragment: 'def '
+        count: 3
+        exact: false
+
+# Buzzer Manager (buzzer_manager.py) Tests
+- src/buzzer_manager.py:
+    - description: Check file exists
+      check: ConfirmFileExists
+    - description: Use dictionary creation with {} (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: '{'
+        count: 3
+        exact: false
+    - description: Use dictionary key access with [] (at least 4 times)
+      check: MatchFileFragment
+      options:
+        fragment: '["'
+        count: 4
+        exact: false
+    - description: Use dictionary .items() or .values() method (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: .items()
+        count: 1
+        exact: false
+    - description: Use for loop iteration (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'for '
+        count: 2
+        exact: false
+    - description: Use if statements for logic (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'if '
+        count: 3
+        exact: false
+    - description: Use function definitions (at least 3 functions)
+      check: MatchFileFragment
+      options:
+        fragment: 'def '
+        count: 3
+        exact: false
+
+# Main Program (main.py) Tests
+- src/main.py:
+    - description: Check file exists
+      check: ConfirmFileExists
+    - description: Import all three modules
+      check: MatchFileFragment
+      options:
+        fragment: import
+        count: 3
+        exact: false
+    - description: Use function definitions (at least 2 functions)
+      check: MatchFileFragment
+      options:
+        fragment: 'def '
+        count: 2
+        exact: false
+    - description: Use if statements for menu logic (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'if '
+        count: 3
+        exact: false
+
+# General Python and Documentation Requirements
+- description: Use appropriate docstrings for functions (at least 10 times across all files)
+  check: MatchFileFragment
+  options:
+    fragment: '"""'
+    count: 10
+    exact: false
+    
+- description: Complete all TODOs (no TODO comments remaining in any source files)
+  check: ExecuteCommand
+  options:
+    command: grep -r "TODO" src/ && exit 1 || exit 0
+
+# Git Workflow Requirements
+- description: Have at least 4 commits in the repository
+  check: CountCommits
+  options:
+    count: 4
+
+# Reflection Requirements
+- writing/reflection.md:
+    - description: Check reflection exists
+      check: ConfirmFileExists
+    - description: Write sufficient words for thoughtful reflection (at least 300 words)
+      check: CountFileWords
+      options:
+        count: 300
+    - description: Use markdown headers with # (at least 3 headers)
+      check: MatchFileFragment
+      options:
+        fragment: '# '
+        count: 3
+        exact: false
+    - description: Use markdown lists using - (at least 5 list items total)
+      check: MatchFileFragment
+      options:
+        fragment: '- '
+        count: 5
+        exact: false
+    - description: Discuss dictionary usage in your programs
+      check: MatchFileFragment
+      options:
+        fragment: dictionary
+        count: 2
+        exact: false
+    - description: Reflect on hardware integration
+      check: MatchFileFragment
+      options:
+        fragment: hardware
+        count: 1
+        exact: false
+    - description: Discuss sensor readings or data collection
+      check: MatchFileFragment
+      options:
+        fragment: sensor
+        count: 1
+        exact: false

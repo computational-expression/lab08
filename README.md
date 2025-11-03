@@ -289,7 +289,6 @@ git pull origin main
 - Implement exactly 4 core functions: create, add, check alerts, and show stats
 - Use input validation and error handling (try/except for numbers)
 - Print clear, organized output for user
-- **Do not use `.strip()` or `.upper()` on dictionary keys** (we haven't learned these yet)
 
 ### Integration Requirements
 - **temperature_monitor.py** must include `check_temp_alerts()` function
@@ -299,7 +298,7 @@ git pull origin main
 - System should automatically check thresholds and trigger buzzers when needed
 
 ## Reflection
-Write a team reflection in `writing/reflection.md` about:
+Write a team reflection in `writing/reflection.md` about (each person contributes):
 - What you learned about dictionaries
 - How git branching helped your team collaborate
 - Challenges you faced and how you solved them
@@ -314,12 +313,7 @@ Write a team reflection in `writing/reflection.md` about:
 
 ## Running the Integrated System
 
-Once all team members have completed their modules, run the integrated system:
-
-```bash
-cd src
-python3 main.py
-```
+Once all team members have completed their modules, run the integrated system by running `main.py`
 
 ### How the Integration Works
 
@@ -354,14 +348,6 @@ Location: CLASSROOM
 5. Buzzer activated for CLASSROOM
 6. System displays: "BUZZER ON at CLASSROOM: High temperature"
 ```
-
-### Features
-
-- **Unified menu** to access each module individually
-- **Option 4** automatically checks ALL sensors and triggers buzzers
-- **Each module** can run standalone or as part of integrated system
-- **Similar complexity** across all three programs (~110 lines each)
-- **No advanced Python** - uses only basic concepts taught so far
 
 ## Getting Help
 - Ask your instructor or TLs for help during lab
@@ -418,7 +404,7 @@ Location: CLASSROOM
 #### temperature_monitor.py
 ```
 $ python3 temperature_monitor.py
-Temperature monitor initialized with 3 locations
+Temperature monitor initialized
 
 Temperature Monitor:
 1. View all
@@ -450,7 +436,7 @@ ALERTS:
 #### light_monitor.py
 ```
 $ python3 light_monitor.py
-Light monitor initialized with 3 locations
+Light monitor initialized
 
 Light Monitor:
 1. View all
@@ -471,7 +457,7 @@ ALERTS:
 #### buzzer_manager.py
 ```
 $ python3 buzzer_manager.py
-Buzzer alert manager initialized with 3 locations
+Buzzer alert manager initialized
 
 Buzzer Alert Manager:
 1. View all
@@ -509,71 +495,123 @@ ALERT HISTORY:
 #### main.py - System Menu and Automated Alerts
 ```
 $ python3 main.py
-Temperature monitor initialized with 3 locations
-Light monitor initialized with 3 locations
-Buzzer alert manager initialized with 3 locations
+==================================================
+ ENVIRONMENTAL MONITORING SYSTEM
+==================================================
 
-Environmental Monitoring System
-================================
-1. Temperature Monitor
-2. Light Monitor
-3. Buzzer Manager
-4. Check All Alerts
-5. System Summary
-6. Exit
-Choice: 4
+Initializing hardware components...
+  - DHT22 Temperature/Humidity Sensor (GPIO 2)
+  - LDR Photoresistor (GPIO 26)
+  - Passive Buzzer (GPIO 15)
+
+[Temperature Monitor]
+Temperature monitor initialized
+
+[Light Monitor]
+Light monitor initialized
+
+[Buzzer Alert Manager]
+Buzzer alert manager initialized
 
 ==================================================
-Checking all sensor alerts...
+ ALL SYSTEMS READY!
+==================================================
 
-Temperature Alerts:
-  Alert: CLASSROOM: Temperature 26.3C is too warm
-  >>> BUZZER ON at CLASSROOM: High temperature
+This system uses dictionaries to manage:
+  • Temperature/humidity readings from DHT22
+  • Light levels from LDR
+  • Alert status and buzzer control
 
-Light Alerts:
-  Alert: CORNER: Light level 150 is too dark (min 200)
-  >>> BUZZER ON at CORNER: Low light
+Start by adding locations in each module,
+then use 'System Summary & Alerts' to check all sensors!
+==================================================
+
+==================================================
+   ENVIRONMENTAL MONITORING SYSTEM
+==================================================
+
+Select a module:
+1. Temperature Monitor (DHT22)
+2. Light Monitor (LDR)
+3. Buzzer Alert Manager
+4. System Summary & Alerts
+5. Exit
+--------------------------------------------------
+Enter choice (1-5): 4
+
+==================================================
+   SYSTEM SUMMARY
+==================================================
+
+TEMPERATURE MONITOR:
+Total locations: 3
+Average temp: 23.9C
+Average humidity: 48.3%
+Range: 22.5C to 26.3C
+
+ALERTS:
+  - CLASSROOM: Temperature 26.3C is too warm
+
+--------------------------------------------------
+
+LIGHT MONITOR:
+Total locations: 3
+Average light: 403
+Range: 150 to 680
+Bright: 1, Medium: 1, Dark: 1
+
+ALERTS:
+  - CORNER: Light level 150 is too dark (min 200)
+
+--------------------------------------------------
+
+BUZZER ALERTS:
+Total locations: 3
+Active buzzers: 2
+Total alerts triggered: 5
+Average alerts per location: 1.7
+Range: 0 to 2
+
+ALERT HISTORY:
+  - CLASSROOM: 2 alerts, Last: High temperature
+  - CORNER: 2 alerts, Last: Low light
+  - OFFICE: 1 alerts, Last: Low light
+
+==================================================
+
+==================================================
+   CHECKING ALL SENSORS
+==================================================
+
+Temperature Status:
+  WARNING: CLASSROOM: Temperature 26.3C is too warm
+BUZZER ON at CLASSROOM: High temperature
+
+Light Status:
+  WARNING: CORNER: Light level 150 is too dark (min 200)
+BUZZER ON at CORNER: Low light
 
 Buzzer Status:
   2 active alert(s)
     - CLASSROOM: High temperature
     - CORNER: Low light
+
+  Physical buzzer was activated!
 ==================================================
 
-Environmental Monitoring System
-================================
-1. Temperature Monitor
-2. Light Monitor
-3. Buzzer Manager
-4. Check All Alerts
-5. System Summary
-6. Exit
-Choice: 5
-
 ==================================================
-SYSTEM SUMMARY
-
-Temperature Data (3 locations):
-  Average temperature: 23.9C
-  Average humidity: 48.3%
-  
-Light Data (3 locations):
-  Average light level: 403
-  Bright areas: 1
-  
-Alert Data (3 locations):
-  Active buzzers: 2
-  Total alerts: 5
+   ENVIRONMENTAL MONITORING SYSTEM
 ==================================================
 
-Environmental Monitoring System
-================================
-1. Temperature Monitor
-2. Light Monitor
-3. Buzzer Manager
-4. Check All Alerts
-5. System Summary
-6. Exit
-Choice: 6
+Select a module:
+1. Temperature Monitor (DHT22)
+2. Light Monitor (LDR)
+3. Buzzer Alert Manager
+4. System Summary & Alerts
+5. Exit
+--------------------------------------------------
+Enter choice (1-5): 5
+
+Shutting down monitoring system...
 Goodbye!
 ```
